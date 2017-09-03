@@ -1,0 +1,19 @@
+.container {
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.desc, .title {
+	width: 33%;
+}
+
+.title {
+	margin-bottom: 4px;
+	font-weight: bold;
+	order: 1;
+}
+
+.desc {
+	order: 2;
+	margin-bottom: 8px;
+}

@@ -1,0 +1,14 @@
+.list, .details {
+	padding: 16px 8px;
+	height: 100vh;
+}
+
+.header {
+	position: relative;
+}
+
+.clear {
+	position: absolute;
+	right: 10px;
+	cursor: pointer;
+}

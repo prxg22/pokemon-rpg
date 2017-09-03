@@ -1,0 +1,8 @@
+.container {
+	display: flex;
+	flex-direction: row;
+}
+
+.list, .details {
+	max-height: 200px;
+}

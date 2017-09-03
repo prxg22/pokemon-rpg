@@ -1,0 +1,15 @@
+<section class="card-detail">
+	<span class="clear" (click)="clear()">x</span>
+	<h4>{{move.name}}</h4>
+	<p>{{move.desc}}</p>
+	<div class="container">
+		<div class="title">type</div>
+		<div class="desc">{{move.type}}</div>
+		<div class="title">lvl</div>
+		<div class="desc">{{move.lvl}}</div>
+		<div class="title">acc</div>
+		<div class="desc">{{move.acc}}</div>
+	</div>
+	<div>power - {{move.power}}</div>
+	<div class="chart" [style.width]="move.power + '%'"></div>
+</section>

@@ -1,0 +1,11 @@
+<div class="search">
+	<input type="text" name="query" (input)="search($event)" placeholder="search...">
+</div>
+<ul *ngIf="items.length > 0" [class.open]="open">
+	<li *ngFor="let item of items" (click)="getPokemon(item)">
+		<span>{{item.name}}</span>
+	</li>
+</ul>
+
+<h1 *ngIf="items.length < 1 && !this.query">carregando...</h1>
+<p [style.color]="red" *ngIf="items.length < 1 && !!this.query">Nenhum pokemon encontrado ):</p>
