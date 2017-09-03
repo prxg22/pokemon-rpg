@@ -8,9 +8,9 @@ import { PokemonService } from './pokemon/pokemon.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  public selected: Pokemon = null;
   private pokemons: Item[] = [];
   private title = 'my fucking  app';
-  private selected: Pokemon = null;
 
   constructor(private pokemonService: PokemonService) {}
 

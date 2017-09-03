@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+	margin: 0;
+	font-family: 'Helvetica', sans;
+	size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0 0 16px 0;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+dd {
+	margin-left: 16px;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-center;
+}
+
+.list, .details {
+	box-sizing: border-box;
+	display: block;
+	overflow-y: auto;
+}
+
+.list {
+	flex: 1
+}
+
+.list li {
+	margin-bottom: 8px;
+}
+
+.search {
+	max-width: 70%;
+	margin: 16px auto;
+}
+
+.search input {
+	width: 100%;
+	border: 0;
+	border-bottom: 1px black solid;
+	outline: none;
+}
+
+.search input:focus {
+	border-bottom: 2px green solid;
+}
+
+
+
+.details {
+	margin-left: 16px;
+	flex: 3;
+}
+
+
+.card-detail {
+	position: relative;
+}
+
+.card-detail .clear {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	cursor: pointer;
+}
+
+.chart {
+	background-color: red;
+	height: 10px;
+	margin-bottom: 5px;
+}

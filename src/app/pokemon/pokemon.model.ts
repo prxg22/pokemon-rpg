@@ -26,7 +26,7 @@ export class Pokemon {
 	name: string;
 	stats: Stat;
 	moves: MoveItem[];
-	sprites: any[];
+	sprites: { front_default: string };
 	types: any[];
 
 	constructor(obj?: any) {

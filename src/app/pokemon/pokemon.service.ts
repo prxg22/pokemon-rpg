@@ -7,7 +7,7 @@ import { Item, Resource, MoveItem, Move } from './pokemon.model';
 
 @Injectable()
 export class PokemonService {
-  private readonly api = 'http://pokeapi.co/api/v2/';
+  private readonly api = 'https://pokeapi.co/api/v2/';
   private readonly pokemonUrl= this.api + 'pokemon/';
   private readonly moveUrl= this.api + 'move/';
   
