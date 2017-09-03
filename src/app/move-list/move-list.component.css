@@ -3,8 +3,8 @@
 	flex-direction: row;
 }
 
-.list ul:not(.open) {
-	max-height: 447px;
+div.list {
+	max-height: 500px;
 }
 
 @media screen and (max-width: 1056px) {
