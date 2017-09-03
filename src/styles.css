@@ -40,14 +40,23 @@ dd {
 	flex: 1
 }
 
+.list ul {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.list ul.open {
+	flex-direction: row;
+}
+
 .list li {
 	margin-bottom: 8px;
 	cursor: pointer;
-	display: block;
 }
 
 .list .open li {
-	display: inline-block;
 	width: 33%;
 	margin-bottom: 10px;
 	text-align: center;
@@ -143,5 +152,21 @@ dd {
 
 	.list:not(.open) {
 		display: none
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.list ul, .list ul.open {
+		flex-direction: column;
+	}
+
+	.list ul li, .list ul.open li {
+		width: 100%;
+	}
+
+	.list .button,
+	.list .open .button {
+		display: block;
+		width: 90%;
 	}
 }
