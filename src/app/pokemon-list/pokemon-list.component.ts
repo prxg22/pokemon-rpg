@@ -16,6 +16,8 @@ export class PokemonListComponent implements OnInit {
   public onPokemonSelected: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
   @Input()
   public open: boolean = true;
+  @Input()
+  public selected: Pokemon;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -44,8 +46,19 @@ export class PokemonListComponent implements OnInit {
       return;
     }
 
-    let regex: RegExp = new RegExp(`${this.query}`);
-    this.items = this.original.filter(item => regex.test(item.name));
+    let regex: RegExp = new RegExp(`${this.query.toLowerCase()}`);
+    this.items = this.original.filter(item => regex.test(item.name.toLowerCase()));
+  }
+
+  pad(x) { 
+    return String("00" + x).slice(-3); 
+  }
+
+  isActive(item: Item): boolean {
+    if (this.selected) {
+      return item.name === this.selected.name;
+    }
+    return false;
   }
 
 }

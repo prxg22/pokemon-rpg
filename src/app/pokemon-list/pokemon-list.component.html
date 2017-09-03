@@ -2,8 +2,8 @@
 	<input type="text" name="query" (input)="search($event)" placeholder="search...">
 </div>
 <ul *ngIf="items.length > 0" [class.open]="open">
-	<li *ngFor="let item of items" (click)="getPokemon(item)">
-		<span>{{item.name}}</span>
+	<li *ngFor="let item of items; let i = index" (click)="getPokemon(item)">
+		<span class="button" [class.active]="isActive(item)" [class.data-after]="!open" [class.data-before]="open" [attr.data-index]="pad(i+i)">{{item.name}}</span>
 	</li>
 </ul>
 

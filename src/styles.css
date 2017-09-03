@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body{
 	margin: 0;
-	font-family: 'Helvetica', sans;
-	size: 14px;
+	font-family: sans-serif;
+	font-size: 14px;
+	line-height: 1em;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -15,6 +16,10 @@ ul {
 	padding: 0;
 }
 
+dl {
+	margin-top: 0;
+	margin-bottom: 0;
+}
 dd {
 	margin-left: 16px;
 }
@@ -37,6 +42,15 @@ dd {
 
 .list li {
 	margin-bottom: 8px;
+	cursor: pointer;
+	display: block;
+}
+
+.list .open li {
+	display: inline-block;
+	width: 33%;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
 .search {
@@ -52,7 +66,7 @@ dd {
 }
 
 .search input:focus {
-	border-bottom: 2px green solid;
+	border-bottom: 2px rgba(84, 175, 84, 0.69) solid;
 }
 
 
@@ -75,7 +89,50 @@ dd {
 }
 
 .chart {
-	background-color: red;
+	background-color: rgba(84, 175, 84, 0.69);
 	height: 10px;
 	margin-bottom: 5px;
+}
+
+.button {
+	font-weight: bolder;
+	box-sizing: content-box;
+	padding: 16px 8px;
+	padding-left: 16px;
+	border-left: 5px solid rgba(84, 175, 84, 0.69);
+	box-shadow: #eee 3px 3px 6px;
+	text-align: left;
+}
+
+.list .button {
+	display: inline-block;
+	width: 70%;
+	position: relative;
+}
+
+
+
+.list .open .button {
+	width: 65%;
+}
+
+.list .open .button.data-before:before{
+	content: attr(data-index);
+	font-size: 1.2em;
+	font-weight: bolder;
+	padding-right: 12px;
+	vertical-align: baseline;
+}
+
+.list:not(.open) .button.data-after:after{
+	content: attr(data-index);
+	font-size: 0.66em;
+	position: absolute;
+	right: 8px;
+	font-weight: normal;
+	color: #ccc;
+}
+
+.list .button.active {
+	border-left-color: rgba(255, 193, 7, 0.83);
 }

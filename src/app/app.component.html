@@ -1,6 +1,6 @@
 <div class="container">
 	<section class="list" [class.open]="!selected">
-		<app-pokemon-list (onPokemonSelected)="select($event)" [open]="!selected"></app-pokemon-list>
+		<app-pokemon-list (onPokemonSelected)="select($event)" [open]="!selected" [selected]="selected"></app-pokemon-list>
 	</section>
 	<section class="details" *ngIf="selected">
 		<app-pokemon-details [pokemon]="selected" (onClear)="selected = null">

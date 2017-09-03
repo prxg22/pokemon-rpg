@@ -17,7 +17,7 @@ export class Item {
 	url: string;
 
 	constructor(item: {name: string, url: string}) {
-		this.name = item.name;
+		this.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);;
 		this.url = item.url;
 	}
 }

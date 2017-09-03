@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ContentChild } from '@angular/core';
+
 import { PokemonService } from '../pokemon/pokemon.service';
 import { Move, MoveItem } from '../pokemon/pokemon.model';
+import { MoveDetailsComponent } from '../move-details/move-details.component';
 
 @Component({
   selector: 'app-move-list',
@@ -13,6 +15,9 @@ export class MoveListComponent implements OnInit {
   @Input()
   public moveItems: MoveItem[];
 
+  @ContentChild(MoveDetailsComponent)
+  private moveDetailComponent: MoveDetailsComponent;
+
   constructor(private pokemonService: PokemonService) {
     this.moveItems = [];
  }
@@ -22,6 +27,7 @@ export class MoveListComponent implements OnInit {
   }
 
   selectMove(moveItem: MoveItem) {
+    console.log(this.moveDetailComponent);
     this.pokemonService.getMove(moveItem).subscribe((move: Move) => {
       this.selected = move;
     });

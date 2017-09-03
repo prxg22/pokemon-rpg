@@ -3,6 +3,6 @@
 	flex-direction: row;
 }
 
-.list, .details {
-	max-height: 200px;
+.list ul:not(.open) {
+	max-height: 447px;
 }
