@@ -85,6 +85,7 @@ dd {
 	position: absolute;
 	top: 0;
 	right: 10px;
+	font-size: 2rem;
 	cursor: pointer;
 }
 
@@ -110,13 +111,11 @@ dd {
 	position: relative;
 }
 
-
-
 .list .open .button {
 	width: 65%;
 }
 
-.list .open .button.data-before:before{
+.list .button.data-before:before{
 	content: attr(data-index);
 	font-size: 1.2em;
 	font-weight: bolder;
@@ -124,7 +123,7 @@ dd {
 	vertical-align: baseline;
 }
 
-.list:not(.open) .button.data-after:after{
+.list .button.data-after:after{
 	content: attr(data-index);
 	font-size: 0.66em;
 	position: absolute;
@@ -135,4 +134,14 @@ dd {
 
 .list .button.active {
 	border-left-color: rgba(255, 193, 7, 0.83);
+}
+
+@media screen and (max-width: 500px) {
+	body {
+		font-size: 12px;
+	}
+
+	.list:not(.open) {
+		display: none
+	}
 }

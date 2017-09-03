@@ -1,6 +1,9 @@
+<div class="search" *ngIf="!selected">
+	<input type="text" name="query" (input)="search($event)" placeholder="search...">
+</div>
 <div class="container">
-	<div class="list">
-		<ul [class.open]="!selected">
+	<div class="list" [class.open]="!selected">
+		<ul>
 			<li *ngFor="let move of moveItems" (click)="selectMove(move)">
 				<span class="button data-after" [class.active]="selected && selected.name === move.move.name" [attr.data-index]="'Lvl '+ move.lvl">{{move.move.name}}</span>
 			</li>

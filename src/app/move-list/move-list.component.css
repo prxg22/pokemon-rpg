@@ -6,3 +6,9 @@
 .list ul:not(.open) {
 	max-height: 447px;
 }
+
+@media screen and (max-width: 1056px) {
+	.list:not(.open) {
+		display: none;
+	}
+}

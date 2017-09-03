@@ -11,9 +11,11 @@ import { MoveDetailsComponent } from '../move-details/move-details.component';
 })
 export class MoveListComponent implements OnInit {
   public selected: Move;
+  public query: string;
 
   @Input()
   public moveItems: MoveItem[];
+  public original: MoveItem[];
 
   @ContentChild(MoveDetailsComponent)
   private moveDetailComponent: MoveDetailsComponent;
@@ -24,6 +26,7 @@ export class MoveListComponent implements OnInit {
 
   ngOnInit() {
     this.selected = null;
+    this.original = this.moveItems;
   }
 
   selectMove(moveItem: MoveItem) {
@@ -35,6 +38,17 @@ export class MoveListComponent implements OnInit {
 
   clear() {
     this.selected = null;
+  }
+
+  search(event: any) {
+    this.query = event.target.value;
+    if (!this.query) {
+      this.moveItems = this.original;
+      return;
+    }
+
+    let regex: RegExp = new RegExp(`${this.query.toLowerCase()}`);
+    this.moveItems = this.original.filter(moveItem => regex.test(moveItem.move.name.toLowerCase()));
   }
 
 }
