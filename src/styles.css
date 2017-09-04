@@ -20,8 +20,13 @@ dl {
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
 dd {
 	margin-left: 16px;
+}
+
+.logo {
+	text-align: center;
 }
 
 .container {
