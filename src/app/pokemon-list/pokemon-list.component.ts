@@ -50,7 +50,8 @@ export class PokemonListComponent implements OnInit {
     this.items = this.original.filter(item => regex.test(item.name.toLowerCase()));
   }
 
-  pad(x) { 
+  pad(name: string) { 
+    let x = this.original.findIndex((item: Item) => item.name === name) + 1;
     return String("00" + x).slice(-3); 
   }
 

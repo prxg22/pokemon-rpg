@@ -3,7 +3,7 @@
 </div>
 <ul *ngIf="items.length > 0" [class.open]="open">
 	<li *ngFor="let item of items; let i = index" (click)="getPokemon(item)">
-		<span class="button" [class.active]="isActive(item)" [class.data-after]="!open" [class.data-before]="open" [attr.data-index]="pad(i+1)">{{item.name}}</span>
+		<span class="button" [class.active]="isActive(item)" [class.data-after]="!open" [class.data-before]="open" [attr.data-index]="pad(item.name)">{{item.name}}</span>
 	</li>
 </ul>
 

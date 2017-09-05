@@ -107,6 +107,7 @@ dd {
 	background-color: rgba(84, 175, 84, 0.69);
 	height: 10px;
 	margin-bottom: 5px;
+	max-width: 100%
 }
 
 .button {

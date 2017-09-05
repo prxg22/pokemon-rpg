@@ -15,7 +15,7 @@
 			<h4>Stats</h4>
 		</dt>
 		<dd id="stat" *ngFor="let stat of pokemon.stats">
-			<div>{{stat.name}} - {{stat.base_stat}}</div>
+			<div>{{stat.name}}: {{stat.base_stat}}</div>
 			<div class="chart" [style.width]="stat.base_stat + '%'"></div>
 		</dd>
 		<dt>

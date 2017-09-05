@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 
 import { MoveListComponent } from '../move-list/move-list.component';
-import { Pokemon } from '../pokemon/pokemon.model';
+import { Pokemon, MoveItem } from '../pokemon/pokemon.model';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -21,6 +21,7 @@ export class PokemonDetailsComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
+    this.pokemon.moves = this.pokemon.moves.filter((moveItem: MoveItem) => !!moveItem.version);
   }
 
   ngOnChanges(changes: SimpleChanges) {

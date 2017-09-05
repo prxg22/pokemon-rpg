@@ -14,7 +14,7 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   all() {
-    return this.http.get(this.pokemonUrl + '?limit=151');
+    return this.http.get(this.pokemonUrl + '?limit=251');
   }
 
   getMove(moveItem: MoveItem): Observable<Move> {

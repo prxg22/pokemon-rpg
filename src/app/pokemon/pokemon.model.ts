@@ -33,7 +33,10 @@ export class Pokemon {
 		this.name = obj.name.charAt(0).toUpperCase() + obj.name.slice(1);
 
 		if (obj.moves) {
-			this.moves = obj.moves.map(move => new MoveItem(move)).sort((m1, m2) => m1.lvl - m2.lvl);
+			this.moves = obj.moves
+				.map(move => new MoveItem(move))
+				.filter(move => !!move)
+				.sort((m1, m2) => m1.lvl - m2.lvl);
 		}
 
 		if (obj.stats) {
@@ -48,13 +51,9 @@ export class Pokemon {
 			this.types = obj.types.map(typeItem => typeItem.type);
 		}
 	}
-
-	toString() {
-		return `${this.name} - ${this.types}`;
-	}
 }
 
-const versions = ['crystal', 'gold-silver', 'red-blue'];
+const versions = ['gold-silver', 'red-blue', 'crystal'];
 export class Move {
 	name: string;
 	lvl: number;
@@ -62,6 +61,7 @@ export class Move {
 	power: number;
 	acc: number;
 	desc: string;
+	learn_method: string;
 
 	constructor(moveItem: MoveItem, obj?: any) {
 		this.name = obj.name;
@@ -69,12 +69,11 @@ export class Move {
 		this.type = obj.type.name;
 		this.power = Math.round(obj.power/POWER_SCALE);
 		this.acc = obj.accuracy/ACC_SCALE;
-		obj.flavor_text_entries.map(txt => {
-			if (txt.language.name === 'en') {
-				this.desc = txt.flavor_text;
-			}
-		});
+		this.learn_method = moveItem.learn_method;
+		this.desc = obj.flavor_text_entries
+			.find(txt => txt.language.name === 'en').flavor_text;
 	}
+
 }
 
 export class MoveItem {
@@ -84,20 +83,37 @@ export class MoveItem {
 	constructor(obj?: any) {
 		this.move = obj.move;
 		this.version_group_details = obj.version_group_details;
+		if (!this.version) {
+			return null;
+		}
 	}
 
 	get lvl(): number {
-		let lvl = this.version_group_details.reduce( (lvl, detail) => {
-			let version_group = detail.version_group;
-			
-			if (versions.indexOf(version_group.name) > -1 && lvl < 0) {
-				return detail.level_learned_at;
-			}
+		return this.version ? this.version.level_learned_at : 0;
+	}
 
-			return lvl
-		}, -1);
+	get learn_method(): string {
+		return this.version ? this.version.move_learn_method : '';
+	}
 
-		return lvl > -1 ? lvl : this.version_group_details[0].level_learned_at;
+	get version(): { name, move_learn_method, level_learned_at } {
+		let version: { name, move_learn_method, level_learned_at };
+
+		version = this.version_group_details
+			.map((version_group_detail) => {
+				let version = {
+					name: version_group_detail.version_group.name, 
+					move_learn_method: version_group_detail.move_learn_method.name, 
+					level_learned_at: version_group_detail.level_learned_at
+				};
+
+				return version;
+			})
+			.find(version => {
+				return versions.indexOf(version.name) >= 0;
+			})
+
+		return version;
 	}
 }
 

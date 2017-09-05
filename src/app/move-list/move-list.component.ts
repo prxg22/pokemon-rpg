@@ -30,7 +30,6 @@ export class MoveListComponent implements OnInit {
   }
 
   selectMove(moveItem: MoveItem) {
-    console.log(this.moveDetailComponent);
     this.pokemonService.getMove(moveItem).subscribe((move: Move) => {
       this.selected = move;
     });
@@ -49,6 +48,10 @@ export class MoveListComponent implements OnInit {
 
     let regex: RegExp = new RegExp(`${this.query.toLowerCase()}`);
     this.moveItems = this.original.filter(moveItem => regex.test(moveItem.move.name.toLowerCase()));
+  }
+
+  getDataIndex(move: MoveItem): string {
+    return move.learn_method === 'machine' ? 'TM or HM' : `LVL ${move.lvl}`;
   }
 
 }
